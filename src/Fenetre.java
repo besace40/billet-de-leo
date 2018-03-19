@@ -25,17 +25,17 @@ import javax.swing.JTextField;
 
 public class Fenetre extends JFrame implements ActionListener{
 	
-	private String arobas = "@";
+	private String arobas = "@"; //J'initie une variable qui me servira pour vérifier que le mail contient un "@"
 	
 	// La Fenêtre et ce qu'elle contient ! 
-	private JPanel pan = new JPanel();
-	private JPanel radio = new JPanel();
-	private ButtonGroup bg = new ButtonGroup();
+	private JPanel pan = new JPanel(); //Un JPanel pour le fond orange
+	private JPanel radio = new JPanel(); //Un JPanel pour les boutons radios
+	private ButtonGroup bg = new ButtonGroup(); //un ButtonGroup pour rassembler les boutons radios
 	
 	
-	private JButton bouton = new JButton("Valider");
-	private JLabel titre = new JLabel("Veuillez entrer vos coordonnées : ");
-	private JLabel tvide = new JLabel("         ");
+	private JButton bouton = new JButton("Valider"); //Création du bouton "valider"
+	private JLabel titre = new JLabel("Veuillez entrer vos coordonnées : "); //Tout les JLabel qui permettent d'entrer du texte
+	private JLabel tvide = new JLabel("         "); //Espacer les champs
 	private JLabel tvide2= new JLabel("         ");
 	private JLabel tvide3= new JLabel("         ");
 	private JLabel tvide4= new JLabel("         ");
@@ -45,27 +45,27 @@ public class Fenetre extends JFrame implements ActionListener{
 	private JLabel prenom = new JLabel("Prénom :  ");
 	private JLabel mail = new JLabel("Adresse mail :  ");
 	private JLabel concert = new JLabel("Choix du concert : ");
-	private JTextField  cnom,cprenom, cmail;
-	private JComboBox combo = new JComboBox();
-	private JRadioButton jr1 = new JRadioButton("Place assise");
+	
+	private JTextField  cnom,cprenom, cmail; //JTextfield permet les champs de saisie
+	private JComboBox combo = new JComboBox();//JCombobox permet la création de liste déroulante
+	private JRadioButton jr1 = new JRadioButton("Place assise");//JRadioButton, création des deux boutons avec deux choix
 	private JRadioButton jr2 = new JRadioButton("Place debout");
 	
 	
 	//Constructeur de fenêtre 
 	public Fenetre(){
-		this.setTitle("Ma billeterie");
-		this.setSize(500, 400);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
+		this.setTitle("Ma billeterie");//Titre fenêtre
+		this.setSize(500, 400);//Taille fenêtre
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Se ferme avec la croix
+		this.setLocationRelativeTo(null);//Centre l'application
 		
 		//Groupage des boutons radios
-		bg.add(jr1);
+		bg.add(jr1);//Bg intègre les deux boutons, pour qu'on puisse en choisir qu'un seul lors de la réservation
 		bg.add(jr2);
 		radio.add(jr1);
 		radio.add(jr2);
 		
 		//Paramètrage des champ de texte utilisateur
-		
 		nom.setMaximumSize(new Dimension(100,100));
 		prenom.setMaximumSize(new Dimension(100,100));
 		mail.setMaximumSize(new Dimension(100,100));
@@ -150,80 +150,80 @@ public class Fenetre extends JFrame implements ActionListener{
 				
 				String verif = cmail.getText(); //Verifier que l'adresse mail contient bien un @
 				if (verif.contains("@")) {
-				System.out.println("Résumé de la reservation : ");
-				String n1 = cnom.getText();
-				System.out.println("Votre nom : " + n1);
-				String n2 = cprenom.getText();
-				System.out.println("Votre prénom : " + n2);
-				String n3 = cmail.getText();
-				System.out.println("Votre e-mail : "+n3);
-				String n4 = (String) combo.getSelectedItem();
-				System.out.println("Votre concert : "+n4);
-				jr1.setActionCommand("Place assise");
-				jr2.setActionCommand("Place debout");
-				String n5 = bg.getSelection().getActionCommand();
-				System.out.println("Type de place : "+n5);
-				
+					System.out.println("Résumé de la reservation : ");
+					String n1 = cnom.getText();
+					System.out.println("Votre nom : " + n1);
+					String n2 = cprenom.getText();
+					System.out.println("Votre prénom : " + n2);
+					String n3 = cmail.getText();
+					System.out.println("Votre e-mail : "+n3);
+					String n4 = (String) combo.getSelectedItem();
+					System.out.println("Votre concert : "+n4);
+					jr1.setActionCommand("Place assise");
+					jr2.setActionCommand("Place debout");
+					String n5 = bg.getSelection().getActionCommand();
+					System.out.println("Type de place : "+n5);
+					
 				}else {
 					System.out.println("L'adresse e-mail n'est pas valide. ");
-			}
+				}
 				
 				if( bg.getSelection().getActionCommand() =="Place assise") {
 					String radio2 = "place assise";
 					
 					try {
-					      Class.forName("org.postgresql.Driver");
-					      System.out.println("Driver O.K.");
-
-					      String url = "jdbc:postgresql://localhost:5432/billeterie";
-					      String user = "postgres";
-					      String passwd = "jadorelasi";
-
-					      Connection conn = DriverManager.getConnection(url, user, passwd); //pont entre java et la BDD
-					      System.out.println("Connexion effective !");         
-					         
-					      Statement state = conn.createStatement(); //création objet statement
-					      state.executeUpdate("INSERT INTO reservations(nom,prenom,mail,concert,type_place) VALUES('"+cnom.getText()+"','"+cprenom.getText()+"','"+cmail.getText()+"','"+combo.getSelectedItem()+"','"+radio2+"')");
-
-					     
-					      
-					      
-					      
-					    } catch (Exception e) {
-					      e.printStackTrace();//Montre l'erreur de l'exception
-					      System.out.println("Erreur lors de la connexion avec la BDD");
-					      
-					    }  
+						Class.forName("org.postgresql.Driver");
+						System.out.println("Driver O.K.");
+						
+						String url = "jdbc:postgresql://localhost:5432/billeterie";
+						String user = "postgres";
+						String passwd = "jadorelasi";
+						
+						Connection conn = DriverManager.getConnection(url, user, passwd); //pont entre java et la BDD
+						System.out.println("Connexion effective !");         
+						
+						Statement state = conn.createStatement(); //création objet statement
+						state.executeUpdate("INSERT INTO reservations(nom,prenom,mail,concert,type_place) VALUES('"+cnom.getText()+"','"+cprenom.getText()+"','"+cmail.getText()+"','"+combo.getSelectedItem()+"','"+radio2+"')");
+						
+						
+						
+						
+						
+					} catch (Exception e) {
+						e.printStackTrace();//Montre l'erreur de l'exception
+						System.out.println("Erreur lors de la connexion avec la BDD");
+						
+					}  
 				} else {
 					String radio2 = "place debout";
 					
 					try {
-					      Class.forName("org.postgresql.Driver");
-					      System.out.println("Driver O.K.");
-
-					      String url = "jdbc:postgresql://localhost:5432/billeterie";
-					      String user = "postgres";
-					      String passwd = "jadorelasi";
-
-					      Connection conn = DriverManager.getConnection(url, user, passwd); //pont entre java et la BDD
-					      System.out.println("Connexion effective !");         
-					         
-					      Statement state = conn.createStatement(); //création objet statement
-					      state.executeUpdate("INSERT INTO reservations(nom,prenom,mail,concert,type_place) VALUES('"+cnom.getText()+"','"+cprenom.getText()+"','"+cmail.getText()+"','"+combo.getSelectedItem()+"','"+radio2+"')");
-
-					     
-					      
-					      
-					      
-					    } catch (Exception e) {
-					      e.printStackTrace();//Montre l'erreur de l'exception
-					      System.out.println("Erreur lors de la connexion avec la BDD");
-					      
-					    }  
+						Class.forName("org.postgresql.Driver");
+						System.out.println("Driver O.K.");
+						
+						String url = "jdbc:postgresql://localhost:5432/billeterie";
+						String user = "postgres";
+						String passwd = "jadorelasi";
+						
+						Connection conn = DriverManager.getConnection(url, user, passwd); //pont entre java et la BDD
+						System.out.println("Connexion effective !");         
+						
+						Statement state = conn.createStatement(); //création objet statement
+						state.executeUpdate("INSERT INTO reservations(nom,prenom,mail,concert,type_place) VALUES('"+cnom.getText()+"','"+cprenom.getText()+"','"+cmail.getText()+"','"+combo.getSelectedItem()+"','"+radio2+"')");
+						
+						
+						
+						
+						
+					} catch (Exception e) {
+						e.printStackTrace();//Montre l'erreur de l'exception
+						System.out.println("Erreur lors de la connexion avec la BDD");
+						
+					}  
 				}
 				
 				
-			
+				
 			}});
 		
 		
@@ -256,9 +256,9 @@ public class Fenetre extends JFrame implements ActionListener{
 		this.setVisible(true); //La fenêtre est visible
 		
 	}
-
-
-
+	
+	
+	
 	@Override 
 	public void actionPerformed(ActionEvent arg0) { // Inutile, mais fait marcher la classe
 		// TODO Auto-generated method stub
