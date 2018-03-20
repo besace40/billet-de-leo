@@ -136,8 +136,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 			vide5.add(tvide5);
 		
 			Box b6 = Box.createHorizontalBox();
-			b6.add(radio);
-		
+			b6.add(radio);		
 		
 			Box vide6 = Box.createHorizontalBox();
 			vide6.add(tvide6);
