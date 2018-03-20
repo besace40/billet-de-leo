@@ -213,11 +213,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 						
 						Statement state = conn.createStatement(); //création objet statement
 						state.executeUpdate("INSERT INTO reservations(nom,prenom,mail,concert,type_place) VALUES('"+cnom.getText()+"','"+cprenom.getText()+"','"+cmail.getText()+"','"+combo.getSelectedItem()+"','"+radio2+"')");//Remplir les colonnes de la table réservation
-						
-						
-						
-						
-						
+												
 					} catch (Exception e) {
 						e.printStackTrace();//Montre l'erreur de l'exception
 						System.out.println("Erreur lors de la connexion avec la BDD");
@@ -239,38 +235,20 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 						
 						Statement state = conn.createStatement(); //création objet statement
 						state.executeUpdate("INSERT INTO reservations(nom,prenom,mail,concert,type_place) VALUES('"+cnom.getText()+"','"+cprenom.getText()+"','"+cmail.getText()+"','"+combo.getSelectedItem()+"','"+radio2+"')");
-										
-						
-						
-						
+													
 					} catch (Exception e) {
 						e.printStackTrace();//Montre l'erreur de l'exception
 						System.out.println("Erreur lors de la connexion avec la BDD");
 						
 					}  
 				}
-				}
-				
-				
-				
-			}});
-		
+				}			
+			}});		
 		this.setContentPane(pan); //Pan est le JPanel de JFrame
 		this.getContentPane().add(b8); //La fenêtre adopte b8 comme Pane également		
 		this.setVisible(true); 
-		
 	}
-
-	
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
-	
-	
-	
-	 
-	
-	
-	
 }
