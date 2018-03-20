@@ -31,7 +31,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 	// La Fenêtre et ce qu'elle contient ! 
 	private JPanel pan = new JPanel(); //Un JPanel pour le fond orange
 	private JPanel radio = new JPanel(); //Un JPanel pour les boutons radios
-	private ButtonGroup bg = new ButtonGroup(); //un ButtonGroup pour rassembler les boutons radios
+	
 	
 	private JOptionPane erreur = new JOptionPane(); //Une fenêtre d'erreur si l'adresse mail n'est pas valide
 	private	JOptionPane confirmation = new JOptionPane();//Une fenêtre de confirmation de réservation
@@ -51,6 +51,8 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 	
 	private JTextField  cnom,cprenom, cmail; //JTextfield permet les champs de saisie
 	private JComboBox combo = new JComboBox();//JCombobox permet la création de liste déroulante
+	
+	private ButtonGroup bg = new ButtonGroup(); //un ButtonGroup pour rassembler les boutons radios
 	private JRadioButton jr1 = new JRadioButton("Place assise");//JRadioButton, création des deux boutons avec deux choix
 	private JRadioButton jr2 = new JRadioButton("Place debout");
 	
@@ -69,7 +71,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 		radio.add(jr1);//Ajout des boutons au JPannel radio pour configurer leur apparence
 		radio.add(jr2);
 		
-		//Paramètrage des champ de texte utilisateur
+		//Paramètrage du de texte 
 		nom.setMaximumSize(new Dimension(100,100));
 		prenom.setMaximumSize(new Dimension(100,100));
 		mail.setMaximumSize(new Dimension(100,100));
@@ -93,11 +95,11 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 		combo.addItem("Tom Morello - 19/12/2018 - 109€ - Stade des alpes");
 		combo.addItem("Vald - 31/09/2018 - 49€ - Le summum");
 		
-		//Ajout des élèments dans les BOX 
+		
 		pan.setBackground(Color.orange);//Couleur du fond
 		radio.setBackground(Color.orange);//Couleur du fond des bouttons radio
 		
-		
+			//Ajout des élèments dans les BOX 
 			//Création de box, 7 horizontales, 1 verticales dans laquelle les 7 autres sont regroupés
 			Box b1 = Box.createHorizontalBox();
 			b1.add(titre);
@@ -142,6 +144,22 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 		
 			Box b7 = Box.createHorizontalBox();
 			b7.add(bouton);
+			
+			//Box verticale qui comprend les 7 horizontales
+			Box b8 = Box.createVerticalBox();
+			b8.add(b1);
+			b8.add(vide);
+			b8.add(b2);
+			b8.add(vide2);
+			b8.add(b3);
+			b8.add(vide3);
+			b8.add(b4);
+			b8.add(vide4);
+			b8.add(b5);
+			b8.add(vide5);
+			b8.add(b6);
+			b8.add(vide6);
+			b8.add(b7);
 		
 		//Parametrage du Listener, méthode lié au clic sur le bouton et validation du formulaire
 		bouton.addActionListener(new ActionListener() {
@@ -174,7 +192,8 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 						String n5 = bg.getSelection().getActionCommand();
 						System.out.println("Type de place : "+n5);
 						
-						confirmation.showMessageDialog(null,"Place reservée ! Vous êtes "+n2+" "+n1 +"\nVotre mail est : "+n3+"\nVous irez au conert suivant : "+n4,"Récapitulatif",JOptionPane.INFORMATION_MESSAGE); //Message de confirmation						
+						confirmation.showMessageDialog(null,"Place reservée ! Vous êtes "+n2+" "+n1 +"\nVotre mail est : "+n3+"\nVous irez au conert suivant : "+n4,"Récapitulatif",JOptionPane.INFORMATION_MESSAGE); //Message de confirmation	
+						
 					}else {
 						System.out.println("L'adresse e-mail n'est pas valide. "); //Si le mail n'est pas conforme
 						erreur.showMessageDialog(null, "Vous n'avez pas saisi d'adresse mail correcte", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -243,21 +262,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 		
 		
 		
-			//Box verticale qui comprend les 7 horizontales
-			Box b8 = Box.createVerticalBox();
-			b8.add(b1);
-			b8.add(vide);
-			b8.add(b2);
-			b8.add(vide2);
-			b8.add(b3);
-			b8.add(vide3);
-			b8.add(b4);
-			b8.add(vide4);
-			b8.add(b5);
-			b8.add(vide5);
-			b8.add(b6);
-			b8.add(vide6);
-			b8.add(b7);
+		
 		
 		
 		
@@ -270,14 +275,17 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 		this.setVisible(true); //La fenêtre est visible
 		
 	}
+
 	
-	
-	
-	@Override 
-	public void actionPerformed(ActionEvent arg0) { // Inutile, mais fait marcher la classe
+	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
+	 
+	
 	
 	
 }
