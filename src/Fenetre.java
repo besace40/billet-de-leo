@@ -177,7 +177,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 				}else {
 				
 				
-					if (verif1.contains("@") && verif1.contains(".")) {//Si il y a un @ et un "." au champ de mail
+					if (verif1.contains("@") && verif1.contains(".")) {
 						System.out.println("Résumé de la reservation : ");
 						String n1 = cnom.getText();
 						System.out.println("Votre nom : " + n1);
@@ -259,7 +259,6 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 			}});
 		
 		this.setContentPane(pan); //Pan est le JPanel de JFrame
-		this.getContentPane().add(radio);
 		this.getContentPane().add(b8); //La fenêtre adopte b8 comme Pane également
 		
 		this.setVisible(true); //La fenêtre est visible
