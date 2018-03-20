@@ -28,7 +28,7 @@ import javax.swing.JTextField;
 
 public class Fenetre extends JFrame implements ActionListener{ //Implements ActionListener car nous utiliserons des méthodes ActionPerformed
 	
-	// La Fenêtre et ce qu'elle contient ! 
+	//La Fenêtre et ce qu'elle contient ! 
 	private JPanel pan = new JPanel(); //Un JPanel pour le fond orange
 	private JPanel radio = new JPanel(); //Un JPanel pour les boutons radios
 	
@@ -37,7 +37,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 	private	JOptionPane confirmation = new JOptionPane();//Une fenêtre de confirmation de réservation
 	
 	private JButton bouton = new JButton("Valider"); //Création du bouton "valider"
-	private JLabel titre = new JLabel("Veuillez entrer vos coordonnées : "); //Tout les JLabel qui permettent d'entrer du texte
+	private JLabel titre = new JLabel("Veuillez entrer vos coordonnées : "); 
 	private JLabel tvide = new JLabel("         "); //Espacer les champs
 	private JLabel tvide2= new JLabel("         ");
 	private JLabel tvide3= new JLabel("         ");
@@ -49,21 +49,21 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 	private JLabel mail = new JLabel("Adresse mail :  ");
 	private JLabel concert = new JLabel("Choix du concert : ");
 	
-	private JTextField  cnom,cprenom, cmail; //JTextfield permet les champs de saisie
-	private JComboBox combo = new JComboBox();//JCombobox permet la création de liste déroulante
+	private JTextField  cnom,cprenom, cmail; 
+	private JComboBox combo = new JComboBox();
 	
 	private ButtonGroup bg = new ButtonGroup(); //un ButtonGroup pour rassembler les boutons radios
-	private JRadioButton jr1 = new JRadioButton("Place assise");//JRadioButton, création des deux boutons avec deux choix
+	private JRadioButton jr1 = new JRadioButton("Place assise");
 	private JRadioButton jr2 = new JRadioButton("Place debout");
 	
 	//Constructeur de fenêtre 
 	public Fenetre(){
 		jr1.setSelected(true);//De base, jr1 sera coché
 
-		this.setTitle("Ma billeterie");//Titre fenêtre
-		this.setSize(500, 400);//Taille fenêtre
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Se ferme avec la croix
-		this.setLocationRelativeTo(null);//Centre l'application
+		this.setTitle("Ma billeterie");
+		this.setSize(500, 400);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		
 		//Groupage des boutons radios
 		bg.add(jr1);//Bg intègre les deux boutons, pour qu'on puisse en choisir qu'un seul lors de la réservation
@@ -242,8 +242,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 						
 						Statement state = conn.createStatement(); //création objet statement
 						state.executeUpdate("INSERT INTO reservations(nom,prenom,mail,concert,type_place) VALUES('"+cnom.getText()+"','"+cprenom.getText()+"','"+cmail.getText()+"','"+combo.getSelectedItem()+"','"+radio2+"')");
-						
-						
+										
 						
 						
 						
@@ -259,17 +258,8 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 				
 			}});
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		this.setContentPane(pan); //Pan est le JPanel de JFrame
-		
+		this.getContentPane().add(radio);
 		this.getContentPane().add(b8); //La fenêtre adopte b8 comme Pane également
 		
 		this.setVisible(true); //La fenêtre est visible
