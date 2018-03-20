@@ -36,9 +36,9 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 	private JOptionPane erreur = new JOptionPane(); //Une fenêtre d'erreur si l'adresse mail n'est pas valide
 	private	JOptionPane confirmation = new JOptionPane();//Une fenêtre de confirmation de réservation
 	
-	private JButton bouton = new JButton("Valider"); //Création du bouton "valider"
+	private JButton bouton = new JButton("Valider"); 
 	private JLabel titre = new JLabel("Veuillez entrer vos coordonnées : "); 
-	private JLabel tvide = new JLabel("         "); //Espacer les champs
+	private JLabel tvide = new JLabel("         "); 
 	private JLabel tvide2= new JLabel("         ");
 	private JLabel tvide3= new JLabel("         ");
 	private JLabel tvide4= new JLabel("         ");
@@ -66,9 +66,9 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 		this.setLocationRelativeTo(null);
 		
 		//Groupage des boutons radios
-		bg.add(jr1);//Bg intègre les deux boutons, pour qu'on puisse en choisir qu'un seul lors de la réservation
+		bg.add(jr1);
 		bg.add(jr2);
-		radio.add(jr1);//Ajout des boutons au JPannel radio pour configurer leur apparence
+		radio.add(jr1);
 		radio.add(jr2);
 		
 		//Paramètrage du de texte 
@@ -88,19 +88,17 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 		cmail.setMaximumSize(new Dimension(320,50));
 		
 		//Paramètrage du JComboBox(liste déroulante)
-		combo.setMaximumSize(new Dimension(320, 50));//longueur puis largeur
+		combo.setMaximumSize(new Dimension(320, 50));
 		combo.addItem("Bon Entendeur - 20/01/2018 - 55 € - Le Brise Glace");
 		combo.addItem("Kenza Farah - 10/04/2018 - 65 € - Le summum");
 		combo.addItem("Thibault Gomes - 15/06/2018 - 69€ - Bonlieu");
 		combo.addItem("Tom Morello - 19/12/2018 - 109€ - Stade des alpes");
-		combo.addItem("Vald - 31/09/2018 - 49€ - Le summum");
-		
-		
-		pan.setBackground(Color.orange);//Couleur du fond
-		radio.setBackground(Color.orange);//Couleur du fond des bouttons radio
+		combo.addItem("Vald - 31/09/2018 - 49€ - Le summum");	
+				
+		pan.setBackground(Color.orange);
+		radio.setBackground(Color.orange);
 		
 			//Ajout des élèments dans les BOX 
-			//Création de box, 7 horizontales, 1 verticales dans laquelle les 7 autres sont regroupés
 			Box b1 = Box.createHorizontalBox();
 			b1.add(titre);
 		
@@ -160,7 +158,7 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 			b8.add(vide6);
 			b8.add(b7);
 		
-		//Parametrage du Listener, méthode lié au clic sur le bouton et validation du formulaire
+		//Parametrage du Listener
 		bouton.addActionListener(new ActionListener() {
 						
 			public void actionPerformed(ActionEvent arg0) { 
@@ -258,9 +256,8 @@ public class Fenetre extends JFrame implements ActionListener{ //Implements Acti
 			}});
 		
 		this.setContentPane(pan); //Pan est le JPanel de JFrame
-		this.getContentPane().add(b8); //La fenêtre adopte b8 comme Pane également
-		
-		this.setVisible(true); //La fenêtre est visible
+		this.getContentPane().add(b8); //La fenêtre adopte b8 comme Pane également		
+		this.setVisible(true); 
 		
 	}
 
